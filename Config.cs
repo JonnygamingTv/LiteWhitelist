@@ -9,11 +9,13 @@ namespace LiteWhitelist
     public class Config
     {
         public bool WhitelistEnabled { get; set; }
+        public int QueueInterval { get; set; }
         public string DeniedMessage { get; set; }
         public HashSet<ulong> WhitelistedUsers { get; set; }
         public void LoadDefaults() {
 			this.WhitelistEnabled = true;
-			this.DeniedMessage = "Server is currently only allowing Donators and Staff";
+            QueueInterval = 5;
+            this.DeniedMessage = "Server is currently only allowing Donators and Staff";
 			this.WhitelistedUsers = new HashSet<ulong>(11)
 			{
 				76561199015319396UL,
