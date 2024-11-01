@@ -28,7 +28,7 @@ namespace LiteWhitelist.Cmds
         public void Execute(IRocketPlayer caller, string[] command)
         {
             ulong id = 0;
-            if(command.Length == 0 || !ulong.TryParse(command[1], out id))
+            if(command.Length == 0 || !ulong.TryParse(command[0], out id))
             {
                 UnturnedChat.Say(caller, "/whitelistadd [steam64id]", true);
                 return;
@@ -37,10 +37,10 @@ namespace LiteWhitelist.Cmds
             {
                 LiteWhitelist.Instance.config.WhitelistedUsers.Add(id);
                 LiteWhitelist.Instance.SaveConfig();
-                UnturnedChat.Say(caller, id.ToString() + " was already added to whitelist.", true);
+                UnturnedChat.Say(caller, id.ToString() + " was added to whitelist.", true);
                 return;
             }
-            UnturnedChat.Say(caller, "Added to whitelist: "+id.ToString(), true);
+            UnturnedChat.Say(caller, id.ToString() + " was already added to whitelist.", true);
         }
 
     }

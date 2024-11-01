@@ -28,12 +28,12 @@ namespace LiteWhitelist.Cmds
         public void Execute(IRocketPlayer caller, string[] command)
         {
             ulong id = 0;
-            if(command.Length == 0 || !ulong.TryParse(command[1], out id))
+            if(command.Length == 0 || !ulong.TryParse(command[0], out id))
             {
                 UnturnedChat.Say(caller, "/whitelistremove [steam64id]", true);
                 return;
             }
-            if (!LiteWhitelist.Instance.config.WhitelistedUsers.Contains(id))
+            if (LiteWhitelist.Instance.config.WhitelistedUsers.Contains(id))
             {
                 LiteWhitelist.Instance.config.WhitelistedUsers.Remove(id);
                 LiteWhitelist.Instance.SaveConfig();
